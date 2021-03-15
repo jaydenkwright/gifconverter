@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from 'react'
+import { createFFmpeg, fetchFile } from '@ffmpeg/ffmpeg'
 
+const ffmpeg = createFFmpeg({ log: true })
 function App() {
-  return (
+  const [ready, setReady] = useState(false)
+
+  const load = async() => {
+    try{
+      await ffmpeg.load()
+      setReady(true)
+    }catch(e){
+      console.log(e)
+    }
+  }
+
+  useEffect(() => {
+    load()
+  }, [])
+  return ready ? (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      
     </div>
-  );
+  ): <p>Loading...</p>;
 }
 
 export default App;
