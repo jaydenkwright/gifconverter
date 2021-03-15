@@ -37,6 +37,8 @@ function App() {
         src={URL.createObjectURL(video)} 
       />}
       <input type='file' onChange={(e) => setvideo(e.target.files?.item(0))} accept='video/*' />
+      <button onClick={convert}>Convert</button>
+      {gif && <img src={gif} />}
     </div>
   ): <p>Loading...</p>;
 }
