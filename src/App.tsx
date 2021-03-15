@@ -5,6 +5,7 @@ const ffmpeg = createFFmpeg({ log: true })
 function App() {
   const [ready, setReady] = useState(false)
   const [video, setvideo] = useState<File | null | undefined>()
+  const [gif, setGif] = useState<any>()
 
   const load = async() => {
     try{
@@ -12,6 +13,16 @@ function App() {
       setReady(true)
     }catch(e){
       console.log(e)
+    }
+  }
+
+  const convert = async () => {
+    if (video){
+      ffmpeg.FS('writeFile', video.name, await fetchFile(video))
+      await ffmpeg.run('-i', video.name, '-t', '30', '-f', 'gif', 'gif.gif')
+      const convertedGif = ffmpeg.FS<any>('readFile', 'gif.gif')
+      const gifUrl = URL.createObjectURL(new Blob([convertedGif.buffer], {type: 'image/gif'}))
+      setGif(gifUrl)
     }
   }
 
