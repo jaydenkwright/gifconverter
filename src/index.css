@@ -5,7 +5,23 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #d1c4e9;
 }
+
+.container{
+  text-align: center;
+  margin: 5rem 10rem;
+  padding: 5rem;
+  min-height: 20rem;
+  background-color: #b39ddb;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
