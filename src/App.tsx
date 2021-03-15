@@ -4,6 +4,7 @@ import { createFFmpeg, fetchFile } from '@ffmpeg/ffmpeg'
 const ffmpeg = createFFmpeg({ log: true })
 function App() {
   const [ready, setReady] = useState(false)
+  const [video, setvideo] = useState<any>()
 
   const load = async() => {
     try{
@@ -19,7 +20,12 @@ function App() {
   }, [])
   return ready ? (
     <div className="App">
-      
+      {video && <video 
+        controls 
+        width='250' 
+        src={URL.createObjectURL(video)} 
+      />}
+      <input type='file' onChange={(e) => setvideo(e.target.files?.item(0))}/>
     </div>
   ): <p>Loading...</p>;
 }
