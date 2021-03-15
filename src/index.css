@@ -21,6 +21,26 @@ body {
   flex-direction: column;
 }
 
+.convertButton{
+  background-color: #673ab7;
+  color: #ede7f6;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  height: 2rem;
+  width: 5rem;
+  cursor: pointer;
+  margin: 1rem;
+}
+
+.convertButton:hover{
+  background-color: #7e57c2;
+}
+
+.convertButton:active {
+  background-color: #7e57c2;
+  transform: translateY(2px);
+}
 
 
 code {
