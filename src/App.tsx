@@ -32,7 +32,7 @@ function App() {
 
   const hiddenFileInput = useRef<any>(null);
 
-  const handleClick = (e: any) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     hiddenFileInput?.current?.click();
   };
 
