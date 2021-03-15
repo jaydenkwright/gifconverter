@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { createFFmpeg, fetchFile } from '@ffmpeg/ffmpeg'
 
 const ffmpeg = createFFmpeg({ log: true })
@@ -29,15 +29,25 @@ function App() {
   useEffect(() => {
     load()
   }, [])
+
+  const hiddenFileInput = useRef<any>(null);
+
+  const handleClick = (e: any) => {
+    hiddenFileInput?.current?.click();
+  };
+
+
   return ready ? (
-    <div className="App">
+    <div className="container">
       {video && <video 
         controls 
         width='250' 
         src={URL.createObjectURL(video)} 
-      />}
-      <input type='file' onChange={(e) => setvideo(e.target.files?.item(0))} accept='video/*' />
-      <button onClick={convert}>Convert</button>
+      />
+      }
+      {video && <button onClick={convert} className='convertButton'>Convert</button>}
+      <input type='file' ref={hiddenFileInput} onChange={(e) => setvideo(e.target.files?.item(0))} accept='video/*' style={{display: 'none'}}/>
+      <button className='uploadButton' onClick={handleClick} >Select Video File</button>
       {gif && <img src={gif} />}
     </div>
   ): <p>Loading...</p>;
