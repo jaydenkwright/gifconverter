@@ -42,6 +42,24 @@ body {
   transform: translateY(2px);
 }
 
+.uploadButton{
+  background-color: #673ab7;
+  color: #ede7f6;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  height: 3rem;
+  width: 7rem;
+}
+
+.uploadButton:hover{
+  background-color: #7e57c2;
+}
+
+.uploadButton:active {
+  background-color: #7e57c2;
+  transform: translateY(-2px);
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
