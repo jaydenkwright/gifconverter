@@ -3,9 +3,10 @@ import { createFFmpeg, fetchFile } from '@ffmpeg/ffmpeg'
 
 const ffmpeg = createFFmpeg({ log: true })
 function App() {
-  const [ready, setReady] = useState(false)
+  const [ready, setReady] = useState<boolean>(false)
   const [video, setvideo] = useState<File | null | undefined>()
   const [gif, setGif] = useState<any>()
+  const [convertLoading, setConvertLoading] = useState<boolean>(false)
 
   const load = async() => {
     try{
@@ -18,11 +19,13 @@ function App() {
 
   const convert = async () => {
     if (video){
+      setConvertLoading(true)
       ffmpeg.FS('writeFile', video.name, await fetchFile(video))
       await ffmpeg.run('-i', video.name, '-t', '30', '-f', 'gif', 'gif.gif')
       const convertedGif = ffmpeg.FS<any>('readFile', 'gif.gif')
       const gifUrl = URL.createObjectURL(new Blob([convertedGif.buffer], {type: 'image/gif'}))
       setGif(gifUrl)
+      setConvertLoading(false)
     }
   }
 
@@ -36,19 +39,19 @@ function App() {
     hiddenFileInput?.current?.click();
   };
 
-
   return ready ? (
     <div className="container">
-      {video && <video 
+      {video && !gif && <video 
         controls 
-        width='250' 
+        width='400' 
         src={URL.createObjectURL(video)} 
       />
       }
-      {video && <button onClick={convert} className='convertButton'>Convert</button>}
+      {convertLoading && 'Converting...'}
+      {gif && <img src={gif} width='400' alt='Gif'/>}
+      {video && !gif && <button onClick={convert} className='convertButton'>Convert</button>}
       <input type='file' ref={hiddenFileInput} onChange={(e) => setvideo(e.target.files?.item(0))} accept='video/*' style={{display: 'none'}}/>
-      <button className='uploadButton' onClick={handleClick} >Select Video File</button>
-      {gif && <img src={gif} />}
+      {!video || gif ? <button className='uploadButton' onClick={handleClick} >Select Video File</button> : null}
     </div>
   ): <p>Loading...</p>;
 }
