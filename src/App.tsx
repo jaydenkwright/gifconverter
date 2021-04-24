@@ -7,7 +7,7 @@ import ConvertButton from './components/ConvertButton'
 import Loading from './components/Loading'
 import Error from './components/Error'
 
-const ffmpeg = createFFmpeg({ log: true,  })
+const ffmpeg = createFFmpeg({ log: false })
 function App() {
   const [ready, setReady] = useState<boolean>(false)
   const [video, setVideo] = useState<File | null | undefined>()
