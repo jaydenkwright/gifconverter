@@ -9,7 +9,7 @@ const Gif: React.FC<Props> = ({ src }) => {
         <div>
             <img 
                 src={src} 
-                width='300' 
+                width='400' 
                 alt='Gif'
             />
         </div>
