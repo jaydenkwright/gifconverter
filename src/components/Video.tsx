@@ -9,7 +9,7 @@ const Video: React.FC<Props> = ({ src }) => {
         <div>
             <video 
                 controls
-                width='250'
+                width='400'
                 src={src}
             />
         </div>
