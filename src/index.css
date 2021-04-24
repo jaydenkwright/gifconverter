@@ -18,6 +18,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  animation: fadeIn .5s ease-in;
 }
 
 .convertButton{
@@ -72,6 +73,16 @@ body {
   animation: spin 2s linear infinite;
 }
 
+.error{
+  text-align: center;
+  background-color: #7e57c2;
+  height: 3rem;
+  padding: 1rem 0rem 0rem 0rem;
+  color: #ede7f6;
+  font-size: 1.5rem;
+  animation: fadeIn .5s ease-in;
+}
+
 @-webkit-keyframes spin {
   0% { -webkit-transform: rotate(0deg); }
   100% { -webkit-transform: rotate(360deg); }
@@ -80,6 +91,16 @@ body {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 100 }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 100 }
 }
 
 code {
