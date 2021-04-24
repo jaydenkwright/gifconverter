@@ -5,6 +5,7 @@ import Gif from './components/Gif'
 import UploadButton from './components/UploadButton'
 import ConvertButton from './components/ConvertButton'
 import Loading from './components/Loading'
+import Error from './components/Error'
 
 const ffmpeg = createFFmpeg({ log: true,  })
 function App() {
@@ -45,7 +46,7 @@ function App() {
         video={video} 
       />
     </div>
-  ): !ready && !error ? <Loading /> : <p>{error}</p>;
+  ): !ready && !error ? <Loading /> : <Error error={error} />;
 }
 
 export default App;
