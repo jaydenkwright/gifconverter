@@ -13,7 +13,6 @@ body {
   margin: 5rem 10rem;
   padding: 5rem;
   min-height: 20rem;
-  background-color: #b39ddb;
   border-radius: 15px;
   display: flex;
   justify-content: center;
@@ -61,7 +60,31 @@ body {
   transform: translateY(-2px);
 }
 
+.loading{
+  text-align: center;
+  margin: 10rem auto;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #7e57c2;
+  width: 5rem;
+  height: 5rem;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
