@@ -1,7 +1,7 @@
 # Gif Converter
 
 <!-- TABLE OF CONTENTS -->
-  <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
+  ## Table of Contents
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
@@ -44,14 +44,6 @@ This is a simple single page web app that allows users to select a video file an
 ## Getting Started
 
 To get a local copy up and running follow these simple steps.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
 
 ### Installation
 
